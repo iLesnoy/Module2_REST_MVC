@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan("com.epam.esm.gifts")
-@PropertySource("classpath:jdbc.properties")
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 public class RepositoryConfig {
 
