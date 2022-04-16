@@ -46,7 +46,7 @@ public class TagDaoImpl implements TagDao {
 
     @Override
     public Optional<Tag> findById(Long id) {
-        Optional<Tag> optionalTag = jdbcTemplate.query(FIND_TAG_BY_ID,new Object[]{id},new BeanPropertyRowMapper<>(Tag.class))
+        Optional<Tag> optionalTag = jdbcTemplate.query(FIND_TAG_BY_ID,new BeanPropertyRowMapper<>(Tag.class),id)
                 .stream().findAny();
         return optionalTag.isPresent() ? optionalTag: Optional.empty();
     }
@@ -63,7 +63,7 @@ public class TagDaoImpl implements TagDao {
 
     @Override
     public Tag findOrCreateTag(Tag tag) {
-        return jdbcTemplate.query(FIND_TAG_BY_NAME,new Object[]{tag.getName()},new BeanPropertyRowMapper<>(Tag.class))
+        return jdbcTemplate.query(FIND_TAG_BY_NAME,new BeanPropertyRowMapper<>(Tag.class),tag.getName())
                 .stream().findAny().orElseGet(() -> create(tag));
     }
 
