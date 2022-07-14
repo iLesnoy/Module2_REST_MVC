@@ -21,10 +21,6 @@ public class GiftCertificate extends AbstractEntity {
     private LocalDateTime lastUpdateDate;
     private List<Tag> tags;
 
-    {
-        tags = new ArrayList<>();
-    }
-
 
     public GiftCertificate(long id, String name, String description, BigDecimal price, int duration
             , LocalDateTime createDate, LocalDateTime lastUpdateDate, List<Tag> tags) {
